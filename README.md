@@ -16,3 +16,23 @@ cost indices into a unified Master Feature Store and a multi‑output regression
 
 The final product is a Streamlit web dashboard that provides cost breakdowns, risk alerts, 
 and annual/monthly toggles for homeowners, renters, and analysts.
+
+Project Architecture:
+living-cost-model/
+│
+├── src/
+│   ├── clean_data.py          # Data engineering pipeline
+│   ├── DataPipeline.py        # Modular transformation pipeline
+│   ├── DatabaseManager.py     # ZIP → county lookup + baseline stats
+│   ├── model_training.py      # Multi-output ML training
+│   ├── inference.py           # predict_monthly_expenses()
+│   └── utils/                 # helpers, validators, visualizers
+│
+├── data/
+│   ├── raw/                   # HUD, PUC, TCEQ, RRC, USDA, BLS, TDI
+│   └── processed/             # parquet + merged feature tables
+│
+├── notebooks/                 # EDA, modeling, SHAP, residuals
+├── frontend/                  # Streamlit UI
+├── docs/                      # Data dictionary, architecture, report
+└── README.md
